@@ -1,14 +1,26 @@
-import { Col } from "react-bootstrap";
-export const ProjectCard = ({ title, description, imgUrl}) => {
-   return (
-    <Col sm = {6} md={4}>
-        <div className="proj-imgbx">
-            <img src={imgUrl} />
-            <div className="proj-txtx">
-                <h4> {title} </h4>
-                <span> {description}</span>
-            </div>
-        </div>   
-    </Col>
-   ) 
-}
+// src/components/ProjectCard.jsx
+import { Button } from "react-bootstrap";
+
+export const ProjectCard = ({ title, description, imgUrl, ghUrl, demoUrl }) => {
+  return (
+    <div className="proj-card">
+      <img src={imgUrl} alt={title} />
+      <div className="proj-content">
+        <h3>{title}</h3>
+        <p>{description}</p>
+        <div className="proj-links">
+          {ghUrl && (
+            <Button variant="outline-light" href={ghUrl} target="_blank">
+              GitHub
+            </Button>
+          )}
+          {demoUrl && (
+            <Button variant="primary" href={demoUrl} target="_blank">
+              Live Demo
+            </Button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
